@@ -29,7 +29,4 @@ const Gameflow = (() => {
     const moveValid = () => {};
     const winortie = () => {};
     
-    return {
-        createBoard
-    }
 })();
