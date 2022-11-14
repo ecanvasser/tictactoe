@@ -50,7 +50,9 @@ const Gameflow = (() => {
     const gameStart = (() => {
         var startButton = document.querySelector('.start');
         startButton.addEventListener('click', function() {
-            displayBar.innerHTML = `Player 1's move`
+            (displayBar.innerHTML == 'Time to duel!') ?
+            displayBar.innerHTML = `Player 1's move` :
+            false
         });
         _createBoard();
     })();
