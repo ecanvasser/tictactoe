@@ -57,8 +57,13 @@ const Gameflow = (() => {
         _createBoard();
     })();
 
-    return {
-        displayBar
-    }
+    const gameReset = (() => {
+        var restartButton = document.querySelector('.restart');
+        var tiles = document.querySelectorAll('.tile');
+        restartButton.addEventListener('click', function() {
+            tiles.forEach(element => element.innerHTML = '');
+            displayBar.innerHTML = `Player 1's move`;
+        })
+    })();
 
 })();
