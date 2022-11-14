@@ -1,0 +1,20 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.gameboard {
+    width: 40%;
+    height: 60%;
+    border: 2px black solid;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(20px, 1fr));
+    grid-template-rows: repeat(3, minmax(20px, 1fr));
+}
+
+.tile {
+    border: 1px gray dotted;
+}
