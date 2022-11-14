@@ -3,7 +3,7 @@ const PlayerFactory = (sym) => {
     const symbol = sym;
 
     const makeMove = (tile) => {
-       tile.innerHTML = symbol
+        tile.innerHTML = symbol
     };
 
     return {
@@ -23,7 +23,7 @@ const Gameflow = (() => {
 
     const Player1 = PlayerFactory('X');
     const Player2 = PlayerFactory('O');
-    var displayBar = document.querySelector('.status');
+    const displayBar = document.querySelector('.status');
 
     const _createBoard = () => {
         const board = document.querySelector('.gameboard');
@@ -38,10 +38,10 @@ const Gameflow = (() => {
     };
 
     const _mainflow = (p1, p2, item) => {
-        if (displayBar.innerHTML == `Player 1's move`) {
+        if (displayBar.innerHTML == `Player 1's move` && item.innerHTML == '') {
             p1.makeMove(item);
             displayBar.innerHTML = `Player 2's move`;
-        } else if (displayBar.innerHTML == `Player 2's move`) {
+        } else if (displayBar.innerHTML == `Player 2's move` && item.innerHTML == '') {
             p2.makeMove(item);
             displayBar.innerHTML = `Player 1's move`;
         }
@@ -55,6 +55,8 @@ const Gameflow = (() => {
         _createBoard();
     })();
 
-    const winortie = () => {};
+    return {
+        displayBar
+    }
 
 })();
