@@ -1,36 +1,60 @@
-const Gameboard = (() => {
-    
-    var gameboard = [];
-    const board = document.querySelector('.gameboard');
-    
-    const _createBoard = (() => {
-        for (i = 0; i < 9; i++) {
-            let tile = board.appendChild(document.createElement('a'));
-            tile.setAttribute('class', 'tile');
-            tile.setAttribute('id', i)
-        }
-    })();
-
-})();
-
 const PlayerFactory = (sym) => {
     
     const symbol = sym;
 
-    const makeMove = (() => {
-        let tiles = document.querySelectorAll('.tile');
-        for (i = 0; i < tiles.length; i++) {
-            tiles[i].addEventListener('click', function() {
-                this.innerHTML = symbol
-            })
-        }
-    })();
+    const makeMove = (tile) => {
+       tile.innerHTML = symbol
+    };
+
+    return {
+        symbol,
+        makeMove
+    }
 
 };
 
+const Gameboard = (() => {
+    
+    var gameboard = [];
+
+})();
+
 const Gameflow = (() => {
 
-    const moveValid = () => {};
+    const Player1 = PlayerFactory('X');
+    const Player2 = PlayerFactory('O');
+    var displayBar = document.querySelector('.status');
+
+    const _createBoard = () => {
+        const board = document.querySelector('.gameboard');
+        for (i = 0; i < 9; i++) {
+            let tile = board.appendChild(document.createElement('a'));
+            tile.setAttribute('class', 'tile');
+            tile.setAttribute('id', i)
+            tile.addEventListener('click', function() {
+                _mainflow(Player1, Player2, tile);
+            })
+        }
+    };
+
+    const _mainflow = (p1, p2, item) => {
+        if (displayBar.innerHTML == `Player 1's move`) {
+            p1.makeMove(item);
+            displayBar.innerHTML = `Player 2's move`;
+        } else if (displayBar.innerHTML == `Player 2's move`) {
+            p2.makeMove(item);
+            displayBar.innerHTML = `Player 1's move`;
+        }
+    };
+
+    const gameStart = (() => {
+        var startButton = document.querySelector('.start');
+        startButton.addEventListener('click', function() {
+            displayBar.innerHTML = `Player 1's move`
+        });
+        _createBoard();
+    })();
+
     const winortie = () => {};
 
 })();
