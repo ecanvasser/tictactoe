@@ -4,12 +4,28 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    background-color: black;
+}
+
+.title {
+    font-family: Bangers;
+    font-size: 80px;
+    color: greenyellow;
+}
+
+.status {
+    margin-bottom: 20px;
+    font-family: Bangers;
+    font-size: 24px;
+    color: white;
 }
 
 .gameboard {
-    width: 40%;
-    height: 60%;
-    border: 2px black solid;
+    width: 30%;
+    height: 50%;
+    border: 2px greenyellow solid;
+    box-shadow: 0px 0px 8px 2px greenyellow;
+    border-radius: 15px;
     display: grid;
     grid-template-columns: repeat(3, minmax(20px, 1fr));
     grid-template-rows: repeat(3, minmax(20px, 1fr));
@@ -20,10 +36,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: Bangers;
+    color: greenyellow;
     font-size: 80px;
 }
 
 .game-buttons {
     display: flex;
-    gap: 10px;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.start, .restart {
+    color: greenyellow;
+    background-color: black;
+    border: 2px solid greenyellow;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 10px 20px;
+    font-family: Bangers;
 }
