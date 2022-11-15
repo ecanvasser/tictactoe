@@ -3,7 +3,8 @@ const PlayerFactory = (sym) => {
     const symbol = sym;
 
     const makeMove = (tile) => {
-        tile.innerHTML = symbol
+        tile.innerHTML = symbol;
+        Gameboard.gameboard.splice(tile.id, 1, symbol);
     };
 
     return {
@@ -15,7 +16,11 @@ const PlayerFactory = (sym) => {
 
 const Gameboard = (() => {
     
-    var gameboard = [];
+    let gameboard = [];
+
+    return {
+        gameboard
+    }
 
 })();
 
@@ -28,6 +33,7 @@ const Gameflow = (() => {
     const _createBoard = () => {
         const board = document.querySelector('.gameboard');
         for (i = 0; i < 9; i++) {
+            Gameboard.gameboard.push('')
             let tile = board.appendChild(document.createElement('a'));
             tile.setAttribute('class', 'tile');
             tile.setAttribute('id', i)
@@ -63,6 +69,9 @@ const Gameflow = (() => {
         restartButton.addEventListener('click', function() {
             tiles.forEach(element => element.innerHTML = '');
             displayBar.innerHTML = `Player 1's move`;
+            for (let i = 0; i < Gameboard.gameboard.length; i++) {
+                Gameboard.gameboard[i] = '';
+            }
         })
     })();
 
