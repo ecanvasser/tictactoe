@@ -28,6 +28,8 @@ const PlayerFactory = (sym, name) => {
             Gameflow.displayBar.innerHTML = `${name} wins!`
         } else if (diag1 == winText || diag2 == winText) {
             Gameflow.displayBar.innerHTML = `${name} wins!`
+        } else if (!board.includes('')) {
+            Gameflow.displayBar.innerHTML = `It's a tie!    `
         }
 
     }
@@ -51,8 +53,8 @@ const Gameboard = (() => {
 
 const Gameflow = (() => {
 
-    const Player1 = PlayerFactory('X', 'Player 1');
-    const Player2 = PlayerFactory('O', 'Player 2');
+    let Player1 = PlayerFactory('X', 'Player 1');
+    let Player2 = PlayerFactory('O', 'Player 2');
     const displayBar = document.querySelector('.status');
 
     const _createBoard = () => {
